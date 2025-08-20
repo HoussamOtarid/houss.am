@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houssam Otarid - Engineering Manager & AI Specialist</title>
+    <meta name="description" content="Engineering Manager and AI Specialist with expertise in full-stack development, team leadership, and AI integration.">
+    
+    <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Devicons for technology icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light theme */
+            --bg-primary: #fafafa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f4f4f5;
+            --text-primary: #09090b;
+            --text-secondary: #71717a;
+            --text-tertiary: #a1a1aa;
+            --accent: #000000;
+            --accent-secondary: #18181b;
+            --border: #e4e4e7;
+            --border-hover: #d4d4d8;
+            --glow: rgba(0, 0, 0, 0.05);
+            --shadow: rgba(0, 0, 0, 0.02);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #000000 0%, #404040 100%);
+            --gradient-secondary: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+            --gradient-accent: linear-gradient(90deg, #000000, #404040, #000000);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --bg-tertiary: #1f1f1f;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-tertiary: #71717a;
+            --accent: #ffffff;
+            --accent-secondary: #f4f4f5;
+            --border: #27272a;
+            --border-hover: #3f3f46;
+            --glow: rgba(255, 255, 255, 0.05);
+            --shadow: rgba(255, 255, 255, 0.02);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #ffffff 0%, #d4d4d8 100%);
+            --gradient-secondary: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+            --gradient-accent: linear-gradient(90deg, #ffffff, #d4d4d8, #ffffff);
+        }
+
+        body {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-tertiary);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--glow);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .theme-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        .theme-toggle i {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        .main {
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slide-up 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            animation: slide-up 0.8s ease-out 0.1s backwards;
+        }
+
+        .hero-location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            animation: slide-up 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-cta {
+            animation: slide-up 0.8s ease-out 0.3s backwards;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Experience Grid */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .role {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .location {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .duration {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-tertiary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .highlights {
+            list-style: none;
+        }
+
+        .experience-period {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-period:last-child {
+            margin-bottom: 0;
+        }
+
+        .period-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .highlights li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .highlights li:hover::before {
+            transform: translateX(5px);
+        }
+
+        .highlights li:hover {
+            color: var(--text-primary);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .skill-card:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-hover);
+            box-shadow: 0 25px 50px var(--shadow);
+        }
+
+        .skill-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-icon {
+            font-size: 2.25rem;
+            margin-bottom: 1.25rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .skill-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tag i {
+            font-size: 1rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        .skill-tag:hover i {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--glow), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px var(--shadow);
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-label {
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        .footer-content {
+            color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .company-header {
+                flex-direction: column;
+                align-items: start;
+                gap: 0.5rem;
+            }
+
+            .duration {
+                align-self: start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Theme icons */
+        [data-theme="light"] .moon-icon { display: block; }
+        [data-theme="light"] .sun-icon { display: none; }
+        [data-theme="dark"] .moon-icon { display: none; }
+        [data-theme="dark"] .sun-icon { display: block; }
+
+        /* Default light theme */
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
+
+        /* About Section Styles */
+        .about-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 2rem;
+        }
+
+        .about-paragraph {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-paragraph:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-paragraph strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Focus Cards */
+        .about-focus {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        .focus-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .focus-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+            z-index: 0;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--border-hover);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .focus-card:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .focus-card:hover .focus-icon {
+            transform: rotate(10deg) scale(1.1);
+            color: var(--accent);
+        }
+
+        .focus-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .focus-content {
+            flex: 1;
+        }
+
+        .focus-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .focus-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        @media (max-width: 968px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-text {
+                padding-right: 0;
+            }
+
+            .about-focus {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-focus {
+                grid-template-columns: 1fr;
+            }
+
+            .focus-card {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Intersection Observer Animation */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animations */
+        .animate-in:nth-child(1) { transition-delay: 0.1s; }
+        .animate-in:nth-child(2) { transition-delay: 0.2s; }
+        .animate-in:nth-child(3) { transition-delay: 0.3s; }
+        .animate-in:nth-child(4) { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">~/houssam</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Houssam Otarid</h1>
+                    <p class="hero-subtitle">Engineering Manager & AI Specialist</p>
+                    <div class="hero-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Montreuil, France</span>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#about" class="cta-button">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- About Section -->
+            <section class="section animate-in" id="about">
+                <div class="section-header">
+                    <h2 class="section-title">About</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p class="about-paragraph">
+                                I'm an <strong>Engineering Manager</strong> and <strong>AI Specialist</strong> passionate about building solutions at the intersection of software engineering and artificial intelligence.
+                            </p>
+                            <p class="about-paragraph">
+                                With experience in <strong>full-stack development</strong> and <strong>team leadership</strong>, I've guided the design and delivery of AI-powered features and agentic systems that reshape how people work. I combine hands-on technical depth with a focus on collaborative practices, whether it's designing reliable architectures, setting up infrastructure to make AI models production-ready, or mentoring engineers to grow their skills.
+                            </p>
+                            <p class="about-paragraph">
+                                I thrive on bridging technical excellence with practical impact, turning emerging AI capabilities into dependable tools that help teams move faster and smarter.
+                            </p>
+                        </div>
+                        <div class="about-focus">
+                            <div class="focus-card">
+                                <div class="focus-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="focus-content">
+                                    <div class="focus-title">AI Innovation</div>
+                                    <div class="focus-description">Designing and delivering AI-powered features and agentic systems that bring real-world impact</div>
+                                </div>
+                            </div>
+                            <div class="focus-card">
+                                <div class="focus-icon">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <div class="focus-content">
+                                    <div class="focus-title">Team Leadership</div>
+                                    <div class="focus-description">Leading small teams, mentoring engineers, and staying actively involved in technical problem-solving</div>
+                                </div>
+                            </div>
+                            <div class="focus-card">
+                                <div class="focus-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="focus-content">
+                                    <div class="focus-title">Architecture Design</div>
+                                    <div class="focus-description">Building scalable and maintainable systems rooted in modern engineering best practices</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section" id="experience">
+                <div class="section-header">
+                    <h2 class="section-title">Experience</h2>
+                </div>
+                <div class="experience-grid">
+                    <div class="experience-card animate-in">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="company-name">Collective.work</h3>
+                                <div class="role">Engineering Manager - AI Specialist</div>
+                                <div class="location">Paris, France</div>
+                            </div>
+                            <div class="duration">April 2022 - Present</div>
+                        </div>
+                        <div class="experience-period">
+                            <div class="period-label">Since company pivot (April 2024):</div>
+                            <ul class="highlights">
+                                <li>Took on a more hands-on technical role while managing a smaller team of 2 engineers</li>
+                                <li>Drove the design and implementation of AI-powered features, including a fully agentic recruiter copilot that leverages all internal recruiter tools (search, profile scoring, etc.) to automate end-to-end recruiting workflows</li>
+                                <li>Independently led integration of AI providers (OpenAI, Anthropic, Mistral), designing prompting strategies, and implementing tracing and monitoring infrastructure</li>
+                                <li>Continued supporting team workflows while taking on more technical responsibilities</li>
+                            </ul>
+                        </div>
+                        <div class="experience-period">
+                            <div class="period-label">Prior to that:</div>
+                            <ul class="highlights">
+                                <li>Continuously improved Engineering team processes and collaboration with other teams</li>
+                                <li>Managed a team of 4 fullstack software engineers, including regular 1-on-1s and performance reviews</li>
+                                <li>Oversaw the full project lifecycle: reviewing feature specs, coordinating implementation, and ensuring deadlines and quality standards were met</li>
+                                <li>Provided technical guidance and supported technical discussions through backend and frontend chapters</li>
+                                <li>Led efforts to maintain and improve code quality through a structured technical debt management process</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-card animate-in">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="company-name">Collective.work</h3>
+                                <div class="role">Senior Software Engineer</div>
+                                <div class="location">Paris, France</div>
+                            </div>
+                            <div class="duration">November 2021 - April 2022</div>
+                        </div>
+                        <ul class="highlights">
+                            <li>Contributed to the setup and development of the very first version of the Collective app, especially on the backend and frontend architectures (Nx, DDD, Hexagonal Architecture)</li>
+                            <li>Collaborated closely with the Product team to deliver the features needed to release the application and actively participated in feature implementation (NestJS, React, TypeScript, PostgreSQL)</li>
+                            <li>Defined processes for the functioning of the Engineering team and its collaboration with the Product team, in close collaboration with the CTO</li>
+                            <li>Contributed significantly to revamping the recruitment process, which led to the successful recruitment of 6 software engineers</li>
+                            <li>Contributed to the early implementation of the testing infrastructure to ensure the reliability and stability of the application (Jest, Testing Library, Storybook, Chromatic, Datadog Synthetics)</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card animate-in">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="company-name">Shift Technology</h3>
+                                <div class="role">Software Engineer → Senior Software Engineer</div>
+                                <div class="location">Paris, France</div>
+                            </div>
+                            <div class="duration">July 2018 - October 2021</div>
+                        </div>
+                        <ul class="highlights">
+                            <li>Contributed to the development of the web application for Shift's Fraud Detection Solution</li>
+                            <li>Defined and/or refined new features with the Product team based on client requests and the product roadmap</li>
+                            <li>Designed and implemented technical solutions (.NET Core, React, Elasticsearch, SQL)</li>
+                            <li>Coordinated with the Quality Assurance team to deliver stable releases (TestRail, Cypress, NUnit)</li>
+                            <li>Maintained and improved the CI/CD pipeline (Git, TeamCity, Octopus Deploy, dotCover)</li>
+                            <li>Triaged bugs and helped Data Scientists when being on-call for support</li>
+                            <li>Developed a reporting system with a focus on high configurability and performance without negatively impacting other applications sharing the same data</li>
+                            <li>Implemented a framework for E2E tests of the application and integrated it to the CI pipeline</li>
+                            <li>Mentored and onboarded new joiners</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card animate-in">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="company-name">Algo Consulting Group</h3>
+                                <div class="role">Software Engineer</div>
+                                <div class="location">Rabat, Morocco</div>
+                            </div>
+                            <div class="duration">November 2017 - June 2018</div>
+                        </div>
+                        <ul class="highlights">
+                            <li>Developed features on a new ticketing system for Morocco's national railway operator (.NET Framework, WPF, SQL)</li>
+                            <li>Improved the development process and defined a maintenance process (TFS, Git)</li>
+                            <li>Monitored and tweaked performance</li>
+                            <li>Identified performance bottlenecks and resolved them following the first production release</li>
+                            <li>Helped the client define requirements and understand the state of the application and its technical limitations</li>
+                            <li>Implemented functionalities to allow the ticketing system to function while offline</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-card animate-in">
+                        <div class="company-header">
+                            <div>
+                                <h3 class="company-name">Microsoft</h3>
+                                <div class="role">Research Intern</div>
+                                <div class="location">Cairo, Egypt</div>
+                            </div>
+                            <div class="duration">June 2016 - August 2016</div>
+                        </div>
+                        <ul class="highlights">
+                            <li>Developed proof of concept systems for identifying Arabic dialects from text and speech, separately, using different Machine Learning approaches (.NET Framework)</li>
+                            <li>Developed tools for collecting and organizing text and audio data, and for training and testing Machine Learning models</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="experience-grid">
+                    <div class="card animate-in">
+                        <h3 class="company-name">Al Akhawayn University in Ifrane</h3>
+                        <div class="role">Master of Science in Software Engineering</div>
+                        <div class="location">2017 • Ifrane, Morocco</div>
+                    </div>
+                    <div class="card animate-in">
+                        <h3 class="company-name">Al Akhawayn University in Ifrane</h3>
+                        <div class="role">Bachelor of Science in Computer Science</div>
+                        <div class="location">2016 • Ifrane, Morocco</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Skills</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card animate-in">
+                        <div class="skill-content">
+                            <div class="skill-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="skill-title">AI & Machine Learning</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag"><i class="fas fa-terminal"></i> Prompt Engineering</span>
+                                <span class="skill-tag"><i class="fas fa-robot"></i> Agentic Systems</span>
+                                <span class="skill-tag"><i class="fas fa-brain"></i> Large Language Models (LLMs)</span>
+                                <span class="skill-tag"><i class="fas fa-database"></i> Retrieval-Augmented Generation (RAG)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card animate-in">
+                        <div class="skill-content">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="skill-title">Development</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag"><i class="devicon-typescript-plain"></i> TypeScript</span>
+                                <span class="skill-tag"><i class="devicon-nodejs-plain"></i> Node.js</span>
+                                <span class="skill-tag"><i class="devicon-nestjs-plain"></i> NestJS</span>
+                                <span class="skill-tag"><i class="devicon-react-original"></i> React</span>
+                                <span class="skill-tag"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
+                                <span class="skill-tag"><i class="devicon-elasticsearch-plain"></i> Elasticsearch</span>
+                                <span class="skill-tag"><i class="devicon-dotnetcore-plain"></i> .NET Core</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card animate-in">
+                        <div class="skill-content">
+                            <div class="skill-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="skill-title">Leadership & Management</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag"><i class="fas fa-users-cog"></i> Team Guidance</span>
+                                <span class="skill-tag"><i class="fas fa-chart-line"></i> Workflow Design</span>
+                                <span class="skill-tag"><i class="fas fa-chess"></i> Technical Direction</span>
+                                <span class="skill-tag"><i class="fas fa-hands-helping"></i> Mentoring</span>
+                                <span class="skill-tag"><i class="fas fa-check-circle"></i> Code Quality Practices</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-card animate-in">
+                        <div class="skill-content">
+                            <div class="skill-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="skill-title">Languages</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">English (Fluent)</span>
+                                <span class="skill-tag">French (Fluent)</span>
+                                <span class="skill-tag">Arabic (Native)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                </div>
+                <div class="contact-grid">
+                    <a href="mailto:hi@houss.am" class="contact-card animate-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-label">Email</div>
+                    </a>
+                    <a href="https://github.com/HoussamOtarid" class="contact-card animate-in" target="_blank" rel="noopener">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-label">GitHub</div>
+                    </a>
+                    <a href="https://linkedin.com/in/houssam-otarid" class="contact-card animate-in" target="_blank" rel="noopener">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-label">LinkedIn</div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Houssam Otarid</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Initialize theme from localStorage or default to dark
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const theme = savedTheme || 'dark';
+            
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Initialize theme and animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            
+            // Observe elements for animation
+            document.querySelectorAll('.animate-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add parallax effect to hero background
+            let ticking = false;
+            
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero::before');
+                if (parallax) {
+                    const speed = scrolled * 0.5;
+                    document.querySelector('.hero').style.transform = `translateY(${speed}px)`;
+                }
+                ticking = false;
+            }
+
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', requestTick, { passive: true });
+
+            // Add hover sound effect simulation (visual feedback)
+            document.querySelectorAll('.card, .contact-card, .skill-card, .experience-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+            });
+
+            // Header scroll effect
+            let lastScroll = 0;
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 100) {
+                    header.style.backdropFilter = 'blur(20px)';
+                    header.style.backgroundColor = 'var(--bg-primary)';
+                } else {
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.backgroundColor = 'transparent';
+                }
+                
+                lastScroll = currentScroll;
+            }, { passive: true });
+        });
+
+        // Add typing animation to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Easter egg: Konami code
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            konamiCode = konamiCode.slice(-konamiSequence.length);
+            
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                document.body.style.animation = 'rainbow 2s infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 4000);
+            }
+        });
+
+        // Add rainbow animation for easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
