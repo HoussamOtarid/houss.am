@@ -6,6 +6,27 @@
     <title>Houssam Otarid - Engineering Manager & AI Specialist</title>
     <meta name="description" content="Engineering Manager and AI Specialist with expertise in full-stack development, team leadership, and AI integration.">
     
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://houss.am/">
+    <meta property="og:title" content="Houssam Otarid - Engineering Manager & AI Specialist">
+    <meta property="og:description" content="Engineering Manager and AI Specialist with expertise in full-stack development, team leadership, and AI integration.">
+    <meta property="og:image" content="https://houss.am/android-chrome-512x512.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://houss.am/">
+    <meta property="twitter:title" content="Houssam Otarid - Engineering Manager & AI Specialist">
+    <meta property="twitter:description" content="Engineering Manager and AI Specialist with expertise in full-stack development, team leadership, and AI integration.">
+    <meta property="twitter:image" content="https://houss.am/android-chrome-512x512.png">
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="Houssam Otarid">
+    <meta name="keywords" content="Houssam Otarid, Engineering Manager, AI Specialist, Full-Stack Developer, TypeScript, React, Node.js, AI Integration, Team Leadership, Software Architecture, Paris, France">
+    <link rel="canonical" href="https://houss.am/">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -13,6 +34,12 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
@@ -930,23 +957,62 @@
         .animate-in:nth-child(3) { transition-delay: 0.3s; }
         .animate-in:nth-child(4) { transition-delay: 0.4s; }
     </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Houssam Otarid",
+        "jobTitle": "Engineering Manager & AI Specialist",
+        "url": "https://houss.am",
+        "sameAs": [
+            "https://linkedin.com/in/houssam-otarid",
+            "https://github.com/HoussamOtarid"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Montreuil",
+            "addressCountry": "France"
+        },
+        "email": "hi@houss.am",
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Al Akhawayn University"
+        },
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Software Engineering",
+            "Team Leadership",
+            "TypeScript",
+            "React",
+            "Node.js",
+            "NestJS",
+            "PostgreSQL"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Collective.work"
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="header">
-        <div class="container">
+        <nav class="container" role="navigation" aria-label="Main navigation">
             <div class="header-content">
-                <a href="#" class="logo">~/houssam</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
+                <a href="#" class="logo" aria-label="Home">~/houssam</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" type="button">
+                    <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
+                    <i class="fas fa-moon moon-icon" aria-hidden="true"></i>
                 </button>
             </div>
-        </div>
+        </nav>
     </header>
 
     <main class="main">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" role="banner">
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">Houssam Otarid</h1>
@@ -967,9 +1033,9 @@
 
         <div class="container">
             <!-- About Section -->
-            <section class="section animate-in" id="about">
+            <article class="section animate-in" id="about" role="article" aria-labelledby="about-title">
                 <div class="section-header">
-                    <h2 class="section-title">About</h2>
+                    <h2 class="section-title" id="about-title">About</h2>
                 </div>
                 <div class="about-content">
                     <div class="about-grid">
@@ -1015,12 +1081,12 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </article>
 
             <!-- Experience Section -->
-            <section class="section" id="experience">
+            <section class="section" id="experience" role="region" aria-labelledby="experience-title">
                 <div class="section-header">
-                    <h2 class="section-title">Experience</h2>
+                    <h2 class="section-title" id="experience-title">Experience</h2>
                 </div>
                 <div class="experience-grid">
                     <div class="experience-card animate-in">
@@ -1130,9 +1196,9 @@
             </section>
 
             <!-- Education Section -->
-            <section class="section">
+            <section class="section" role="region" aria-labelledby="education-title">
                 <div class="section-header">
-                    <h2 class="section-title">Education</h2>
+                    <h2 class="section-title" id="education-title">Education</h2>
                 </div>
                 <div class="experience-grid">
                     <div class="card animate-in">
@@ -1149,9 +1215,9 @@
             </section>
 
             <!-- Skills Section -->
-            <section class="section">
+            <section class="section" role="region" aria-labelledby="skills-title">
                 <div class="section-header">
-                    <h2 class="section-title">Skills</h2>
+                    <h2 class="section-title" id="skills-title">Skills</h2>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-card animate-in">
@@ -1217,26 +1283,26 @@
             </section>
 
             <!-- Contact Section -->
-            <section class="section">
+            <section class="section" role="region" aria-labelledby="contact-title">
                 <div class="section-header">
-                    <h2 class="section-title">Get In Touch</h2>
+                    <h2 class="section-title" id="contact-title">Get In Touch</h2>
                 </div>
                 <div class="contact-grid">
-                    <a href="mailto:hi@houss.am" class="contact-card animate-in">
+                    <a href="mailto:hi@houss.am" class="contact-card animate-in" aria-label="Send email to Houssam">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
                         </div>
                         <div class="contact-label">Email</div>
                     </a>
-                    <a href="https://github.com/HoussamOtarid" class="contact-card animate-in" target="_blank" rel="noopener">
+                    <a href="https://github.com/HoussamOtarid" class="contact-card animate-in" target="_blank" rel="noopener" aria-label="Visit Houssam's GitHub profile">
                         <div class="contact-icon">
-                            <i class="fab fa-github"></i>
+                            <i class="fab fa-github" aria-hidden="true"></i>
                         </div>
                         <div class="contact-label">GitHub</div>
                     </a>
-                    <a href="https://linkedin.com/in/houssam-otarid" class="contact-card animate-in" target="_blank" rel="noopener">
+                    <a href="https://linkedin.com/in/houssam-otarid" class="contact-card animate-in" target="_blank" rel="noopener" aria-label="Visit Houssam's LinkedIn profile">
                         <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
                         </div>
                         <div class="contact-label">LinkedIn</div>
                     </a>
