@@ -325,8 +325,6 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
             width: 500px;
             height: 500px;
             background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
@@ -1922,26 +1920,6 @@
                 observer.observe(el);
             });
 
-            let ticking = false;
-            
-            function updateParallax() {
-                const scrolled = window.pageYOffset;
-                const parallax = document.querySelector('.hero::before');
-                if (parallax) {
-                    const speed = scrolled * 0.5;
-                    document.querySelector('.hero').style.transform = `translateY(${speed}px)`;
-                }
-                ticking = false;
-            }
-
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
-                }
-            }
-
-            window.addEventListener('scroll', requestTick, { passive: true });
 
             document.querySelectorAll('.card, .contact-card, .skill-card, .experience-card').forEach(card => {
                 card.addEventListener('mouseenter', function() {
@@ -1967,21 +1945,6 @@
             }, { passive: true });
         });
 
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            
-            type();
-        }
-
         let konamiCode = [];
         const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
         
@@ -1990,21 +1953,119 @@
             konamiCode = konamiCode.slice(-konamiSequence.length);
             
             if (konamiCode.join(',') === konamiSequence.join(',')) {
-                document.body.style.animation = 'rainbow 2s infinite';
-                setTimeout(() => {
-                    document.body.style.animation = '';
-                }, 4000);
+                activateASCIIArt();
+                konamiCode = [];
             }
         });
 
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rainbow {
-                0% { filter: hue-rotate(0deg); }
-                100% { filter: hue-rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
+        function activateASCIIArt() {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.5s ease-in;
+            `;
+            
+            const asciiContainer = document.createElement('pre');
+            asciiContainer.style.cssText = `
+                font-family: 'JetBrains Mono', monospace;
+                font-size: clamp(0.5rem, 1.5vw, 1rem);
+                line-height: 1.2;
+                color: transparent;
+                text-align: center;
+                white-space: pre;
+                letter-spacing: 0.1em;
+            `;
+            
+            const asciiArt = `
+╦ ╦ ╔═╗ ╦ ╦ ╔═╗ ╔═╗ ╔═╗ ╔╦╗
+╠═╣ ║ ║ ║ ║ ╚═╗ ╚═╗ ╠═╣ ║║║
+╩ ╩ ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╩ ╩ ╩ ╩
+                              
+    ╔═╗ ╔╦╗ ╔═╗ ╦═╗ ╦ ╔╦╗    
+    ║ ║  ║  ╠═╣ ╠╦╝ ║  ║║    
+    ╚═╝  ╩  ╩ ╩ ╩╚═ ╩ ═╩╝    
+
+• Engineering Manager • Applied AI Engineer •
+         Code • Create • Lead • Inspire
+            `;
+            
+            asciiContainer.textContent = asciiArt;
+            overlay.appendChild(asciiContainer);
+            document.body.appendChild(overlay);
+            
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+            }, 10);
+            
+            const chars = asciiArt.split('');
+            let currentText = '';
+            let index = 0;
+            
+            asciiContainer.textContent = '';
+            asciiContainer.style.color = '#ffffff';
+            asciiContainer.style.textShadow = '0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.3), 0 0 30px rgba(255,255,255,0.2)';
+            
+            const typeInterval = setInterval(() => {
+                if (index < chars.length) {
+                    currentText += chars[index];
+                    asciiContainer.textContent = currentText;
+                    
+                    if (Math.random() > 0.9) {
+                        asciiContainer.style.opacity = '0.8';
+                        setTimeout(() => {
+                            asciiContainer.style.opacity = '1';
+                        }, 50);
+                    }
+                    
+                    index++;
+                } else {
+                    clearInterval(typeInterval);
+                    
+                    asciiContainer.style.animation = 'pulse 2s ease-in-out infinite';
+                }
+            }, 15);
+            
+            overlay.addEventListener('click', () => {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.remove();
+                }, 500);
+            });
+            
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.remove();
+                }, 500);
+            }, 8000);
+        }
+
+        (function() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes pulse {
+                    0%, 100% { 
+                        transform: scale(1);
+                        filter: brightness(1);
+                    }
+                    50% { 
+                        transform: scale(1.02);
+                        filter: brightness(1.2);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        })();
     </script>
 </body>
 </html>
