@@ -2,11 +2,11 @@
 
 <div align="center">
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fhouss.am&style=flat-square)](https://houss.am)
-[![GitHub Pages](https://img.shields.io/badge/deployed%20on-GitHub%20Pages-0969da?style=flat-square)](https://pages.github.com/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34C26?style=flat-square&logo=html5&logoColor=white)](https://www.w3.org/TR/html5/)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fhouss.am)](https://houss.am)
+[![GitHub Pages](https://img.shields.io/badge/deployed%20on-GitHub%20Pages-0969da)](https://pages.github.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34C26?logo=html5&logoColor=white)](https://www.w3.org/TR/html5/)
+[![CSS3](https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff)](https://www.w3.org/Style/CSS/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 </div>
 
@@ -42,12 +42,3 @@ The site achieves excellent performance metrics:
 - **Optimized assets** - Appropriate image sizes
 - **Lazy loading** - Animations trigger on scroll
 - **CSS animations** - Hardware-accelerated transforms
-
-
-## 👨‍💻 Author
-
-**Houssam Otarid**
-- Website: [houss.am](https://houss.am)
-- GitHub: [@HoussamOtarid](https://github.com/HoussamOtarid)
-- LinkedIn: [houssam-otarid](https://linkedin.com/in/houssam-otarid)
-- Email: hi@houss.am
