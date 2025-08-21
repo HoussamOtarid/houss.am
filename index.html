@@ -213,6 +213,54 @@
             width: 100%;
         }
 
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            min-width: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--glow);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .lang-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+
         .theme-toggle {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
@@ -1014,11 +1062,16 @@
     <header class="header">
         <nav class="container" role="navigation" aria-label="Main navigation">
             <div class="header-content">
-                <a href="#" class="logo" aria-label="Home">~/houssam</a>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" type="button">
-                    <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
-                    <i class="fas fa-moon moon-icon" aria-hidden="true"></i>
-                </button>
+                <a href="#" class="logo" aria-label="Home" data-i18n="logo">~/houssam</a>
+                <div class="header-controls">
+                    <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language" type="button">
+                        <span class="lang-text">FR</span>
+                    </button>
+                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" type="button">
+                        <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
+                        <i class="fas fa-moon moon-icon" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -1028,15 +1081,15 @@
         <section class="hero" role="banner">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Houssam Otarid</h1>
-                    <p class="hero-subtitle">Engineering Manager & Applied AI Engineer</p>
+                    <h1 class="hero-title" data-i18n="heroTitle">Houssam Otarid</h1>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">Engineering Manager & Applied AI Engineer</p>
                     <div class="hero-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Montreuil, France</span>
+                        <span data-i18n="heroLocation">Montreuil, France</span>
                     </div>
                     <div class="hero-cta">
                         <a href="#about" class="cta-button">
-                            <span>Learn More</span>
+                            <span data-i18n="heroCTA">Learn More</span>
                             <i class="fas fa-arrow-down"></i>
                         </a>
                     </div>
@@ -1048,18 +1101,18 @@
             <!-- About Section -->
             <article class="section animate-in" id="about" role="article" aria-labelledby="about-title">
                 <div class="section-header">
-                    <h2 class="section-title" id="about-title">About</h2>
+                    <h2 class="section-title" id="about-title" data-i18n="aboutTitle">About</h2>
                 </div>
                 <div class="about-content">
                     <div class="about-grid">
                         <div class="about-text">
-                            <p class="about-paragraph">
+                            <p class="about-paragraph" data-i18n-html="aboutParagraph1">
                                 I'm an <strong>Engineering Manager</strong> and <strong>Applied AI Engineer</strong> passionate about building solutions at the intersection of software engineering and artificial intelligence.
                             </p>
-                            <p class="about-paragraph">
-                                With experience in <strong>full-stack development</strong> and <strong>team leadership</strong>, I've guided the design and delivery of AI-powered features and agentic systems that reshape how people work. I combine hands-on technical depth with a focus on collaborative practices, whether it's designing reliable architectures, setting up infrastructure to make AI models production-ready, or mentoring engineers to grow their skills.
+                            <p class="about-paragraph" data-i18n-html="aboutParagraph2">
+                                With experience in <strong>full-stack development</strong> and <strong>team leadership</strong>, I've guided the design and delivery of AI-powered features and agentic systems that reshape how people work. I combine hands-on technical depth with a focus on collaborative practices, whether it's designing reliable architectures, implementing AI features with proper monitoring and tracing, or mentoring engineers to grow their skills.
                             </p>
-                            <p class="about-paragraph">
+                            <p class="about-paragraph" data-i18n-html="aboutParagraph3">
                                 I thrive on bridging technical excellence with practical impact, turning emerging AI capabilities into dependable tools that help teams move faster and smarter.
                             </p>
                         </div>
@@ -1069,8 +1122,8 @@
                                     <i class="fas fa-robot"></i>
                                 </div>
                                 <div class="focus-content">
-                                    <div class="focus-title">AI Innovation</div>
-                                    <div class="focus-description">Designing and delivering AI-powered features and agentic systems that bring real-world impact</div>
+                                    <div class="focus-title" data-i18n="focusAITitle">AI Innovation</div>
+                                    <div class="focus-description" data-i18n="focusAIDescription">Designing and delivering AI-powered features and agentic systems that bring real-world impact</div>
                                 </div>
                             </div>
                             <div class="focus-card">
@@ -1078,8 +1131,8 @@
                                     <i class="fas fa-users-cog"></i>
                                 </div>
                                 <div class="focus-content">
-                                    <div class="focus-title">Team Leadership</div>
-                                    <div class="focus-description">Leading small teams, mentoring engineers, and staying actively involved in technical problem-solving</div>
+                                    <div class="focus-title" data-i18n="focusTeamTitle">Team Leadership</div>
+                                    <div class="focus-description" data-i18n="focusTeamDescription">Leading small teams, mentoring engineers, and staying actively involved in technical problem-solving</div>
                                 </div>
                             </div>
                             <div class="focus-card">
@@ -1087,8 +1140,8 @@
                                     <i class="fas fa-layer-group"></i>
                                 </div>
                                 <div class="focus-content">
-                                    <div class="focus-title">Architecture Design</div>
-                                    <div class="focus-description">Building scalable and maintainable systems rooted in modern engineering best practices</div>
+                                    <div class="focus-title" data-i18n="focusArchitectureTitle">Architecture Design</div>
+                                    <div class="focus-description" data-i18n="focusArchitectureDescription">Building scalable and maintainable systems rooted in modern engineering best practices</div>
                                 </div>
                             </div>
                         </div>
@@ -1099,7 +1152,7 @@
             <!-- Experience Section -->
             <section class="section" id="experience" role="region" aria-labelledby="experience-title">
                 <div class="section-header">
-                    <h2 class="section-title" id="experience-title">Experience</h2>
+                    <h2 class="section-title" id="experience-title" data-i18n="experienceTitle">Experience</h2>
                 </div>
                 <div class="experience-grid">
                     <div class="experience-card animate-in">
@@ -1211,7 +1264,7 @@
             <!-- Education Section -->
             <section class="section" role="region" aria-labelledby="education-title">
                 <div class="section-header">
-                    <h2 class="section-title" id="education-title">Education</h2>
+                    <h2 class="section-title" id="education-title" data-i18n="educationTitle">Education</h2>
                 </div>
                 <div class="experience-grid">
                     <div class="card animate-in">
@@ -1230,7 +1283,7 @@
             <!-- Skills Section -->
             <section class="section" role="region" aria-labelledby="skills-title">
                 <div class="section-header">
-                    <h2 class="section-title" id="skills-title">Skills</h2>
+                    <h2 class="section-title" id="skills-title" data-i18n="skillsTitle">Skills</h2>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-card animate-in">
@@ -1298,26 +1351,26 @@
             <!-- Contact Section -->
             <section class="section" role="region" aria-labelledby="contact-title">
                 <div class="section-header">
-                    <h2 class="section-title" id="contact-title">Get In Touch</h2>
+                    <h2 class="section-title" id="contact-title" data-i18n="contactTitle">Get In Touch</h2>
                 </div>
                 <div class="contact-grid">
                     <a href="mailto:hi@houss.am" class="contact-card animate-in" aria-label="Send email to Houssam">
                         <div class="contact-icon">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                         </div>
-                        <div class="contact-label">Email</div>
+                        <div class="contact-label" data-i18n="contactEmail">Email</div>
                     </a>
                     <a href="https://github.com/HoussamOtarid" class="contact-card animate-in" target="_blank" rel="noopener" aria-label="Visit Houssam's GitHub profile">
                         <div class="contact-icon">
                             <i class="fab fa-github" aria-hidden="true"></i>
                         </div>
-                        <div class="contact-label">GitHub</div>
+                        <div class="contact-label" data-i18n="contactGitHub">GitHub</div>
                     </a>
                     <a href="https://linkedin.com/in/houssam-otarid" class="contact-card animate-in" target="_blank" rel="noopener" aria-label="Visit Houssam's LinkedIn profile">
                         <div class="contact-icon">
                             <i class="fab fa-linkedin" aria-hidden="true"></i>
                         </div>
-                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-label" data-i18n="contactLinkedIn">LinkedIn</div>
                     </a>
                 </div>
             </section>
@@ -1327,13 +1380,493 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Houssam Otarid</p>
+                <p data-i18n="footerText">&copy; 2025 Houssam Otarid</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme toggle functionality
+        const translations = {
+            en: {
+                // Meta
+                siteTitle: "Houssam Otarid - Engineering Manager & Applied AI Engineer",
+                siteDescription: "Engineering Manager and Applied AI Engineer with expertise in full-stack development, team leadership, and AI integration.",
+                
+                // Header
+                logo: "~/houssam",
+                
+                // Hero
+                heroTitle: "Houssam Otarid",
+                heroSubtitle: "Engineering Manager & Applied AI Engineer",
+                heroLocation: "Montreuil, France",
+                heroCTA: "Learn More",
+                
+                // About Section
+                aboutTitle: "About",
+                aboutParagraph1: "I'm an <strong>Engineering Manager</strong> and <strong>Applied AI Engineer</strong> passionate about building solutions at the intersection of software engineering and artificial intelligence.",
+                aboutParagraph2: "With experience in <strong>full-stack development</strong> and <strong>team leadership</strong>, I've guided the design and delivery of AI-powered features and agentic systems that reshape how people work. I combine hands-on technical depth with a focus on collaborative practices, whether it's designing reliable architectures, implementing AI features with proper monitoring and tracing, or mentoring engineers to grow their skills.",
+                aboutParagraph3: "I thrive on bridging technical excellence with practical impact, turning emerging AI capabilities into dependable tools that help teams move faster and smarter.",
+                
+                // About Focus Cards
+                focusAITitle: "AI Innovation",
+                focusAIDescription: "Designing and delivering AI-powered features and agentic systems that bring real-world impact",
+                focusTeamTitle: "Team Leadership",
+                focusTeamDescription: "Leading small teams, mentoring engineers, and staying actively involved in technical problem-solving",
+                focusArchitectureTitle: "Architecture Design",
+                focusArchitectureDescription: "Building scalable and maintainable systems rooted in modern engineering best practices",
+                
+                // Experience Section
+                experienceTitle: "Experience",
+                
+                // Collective.work - Engineering Manager
+                collective1Company: "Collective.work",
+                collective1Role: "Engineering Manager - Applied AI Engineer",
+                collective1Location: "Paris, France",
+                collective1Duration: "April 2022 - Present",
+                collective1Period1Label: "Since company pivot (April 2024):",
+                collective1Period1Points: [
+                    "Took on a more hands-on technical role while managing a smaller team of 2 engineers",
+                    "Drove the design and implementation of AI-powered features, including a fully agentic recruiter copilot that leverages all internal recruiter tools (search, profile scoring, etc.) to automate end-to-end recruiting workflows",
+                    "Independently led integration of AI providers (OpenAI, Anthropic, Mistral), designing prompting strategies, and implementing tracing and monitoring infrastructure",
+                    "Continued supporting team workflows while taking on more technical responsibilities"
+                ],
+                collective1Period2Label: "Prior to that:",
+                collective1Period2Points: [
+                    "Continuously improved Engineering team processes and collaboration with other teams",
+                    "Managed a team of 4 fullstack software engineers, including regular 1-on-1s and performance reviews",
+                    "Oversaw the full project lifecycle: reviewing feature specs, coordinating implementation, and ensuring deadlines and quality standards were met",
+                    "Provided technical guidance and supported technical discussions through backend and frontend chapters",
+                    "Led efforts to maintain and improve code quality through a structured technical debt management process"
+                ],
+                
+                // Collective.work - Senior Software Engineer
+                collective2Company: "Collective.work",
+                collective2Role: "Senior Software Engineer",
+                collective2Location: "Paris, France",
+                collective2Duration: "November 2021 - April 2022",
+                collective2Points: [
+                    "Contributed to the setup and development of the very first version of the Collective app, especially on the backend and frontend architectures (Nx, DDD, Hexagonal Architecture)",
+                    "Collaborated closely with the Product team to deliver the features needed to release the application and actively participated in feature implementation (NestJS, React, TypeScript, PostgreSQL)",
+                    "Defined processes for the functioning of the Engineering team and its collaboration with the Product team, in close collaboration with the CTO",
+                    "Contributed significantly to revamping the recruitment process, which led to the successful recruitment of 6 software engineers",
+                    "Contributed to the early implementation of the testing infrastructure to ensure the reliability and stability of the application (Jest, Testing Library, Storybook, Chromatic, Datadog Synthetics)"
+                ],
+                
+                // Shift Technology
+                shiftCompany: "Shift Technology",
+                shiftRole: "Software Engineer → Senior Software Engineer",
+                shiftLocation: "Paris, France",
+                shiftDuration: "July 2018 - October 2021",
+                shiftPoints: [
+                    "Contributed to the development of the web application for Shift's Fraud Detection Solution",
+                    "Defined and/or refined new features with the Product team based on client requests and the product roadmap",
+                    "Designed and implemented technical solutions (.NET Core, React, Elasticsearch, SQL)",
+                    "Coordinated with the Quality Assurance team to deliver stable releases (TestRail, Cypress, NUnit)",
+                    "Maintained and improved the CI/CD pipeline (Git, TeamCity, Octopus Deploy, dotCover)",
+                    "Triaged bugs and helped Data Scientists when being on-call for support",
+                    "Developed a reporting system with a focus on high configurability and performance without negatively impacting other applications sharing the same data",
+                    "Implemented a framework for E2E tests of the application and integrated it to the CI pipeline",
+                    "Mentored and onboarded new joiners"
+                ],
+                
+                // Algo Consulting Group
+                algoCompany: "Algo Consulting Group",
+                algoRole: "Software Engineer",
+                algoLocation: "Rabat, Morocco",
+                algoDuration: "November 2017 - June 2018",
+                algoPoints: [
+                    "Developed features on a new ticketing system for Morocco's national railway operator (.NET Framework, WPF, SQL)",
+                    "Improved the development process and defined a maintenance process (TFS, Git)",
+                    "Monitored and tweaked performance",
+                    "Identified performance bottlenecks and resolved them following the first production release",
+                    "Helped the client define requirements and understand the state of the application and its technical limitations",
+                    "Implemented functionalities to allow the ticketing system to function while offline"
+                ],
+                
+                // Microsoft
+                microsoftCompany: "Microsoft",
+                microsoftRole: "Research Intern",
+                microsoftLocation: "Cairo, Egypt",
+                microsoftDuration: "June 2016 - August 2016",
+                microsoftPoints: [
+                    "Developed proof of concept systems for identifying Arabic dialects from text and speech, separately, using different Machine Learning approaches (.NET Framework)",
+                    "Developed tools for collecting and organizing text and audio data, and for training and testing Machine Learning models"
+                ],
+                
+                // Education Section
+                educationTitle: "Education",
+                edu1University: "Al Akhawayn University in Ifrane",
+                edu1Degree: "Master of Science in Software Engineering",
+                edu1Location: "2017 • Ifrane, Morocco",
+                edu2University: "Al Akhawayn University in Ifrane",
+                edu2Degree: "Bachelor of Science in Computer Science",
+                edu2Location: "2016 • Ifrane, Morocco",
+                
+                // Skills Section
+                skillsTitle: "Skills",
+                skillAITitle: "AI & Machine Learning",
+                skillDevTitle: "Development",
+                skillLeadershipTitle: "Leadership & Management",
+                skillLanguagesTitle: "Languages",
+                
+                // Skill Tags
+                skillPromptEngineering: "Prompt Engineering",
+                skillAgenticSystems: "Agentic Systems",
+                skillLLMs: "Large Language Models (LLMs)",
+                skillRAG: "Retrieval-Augmented Generation (RAG)",
+                skillTeamGuidance: "Team Guidance",
+                skillWorkflowDesign: "Workflow Design",
+                skillTechnicalDirection: "Technical Direction",
+                skillMentoring: "Mentoring",
+                skillCodeQuality: "Code Quality Practices",
+                
+                // Language Skills
+                langEnglish: "English (Fluent)",
+                langFrench: "French (Fluent)",
+                langArabic: "Arabic (Native)",
+                
+                // Contact Section
+                contactTitle: "Get In Touch",
+                contactEmail: "Email",
+                contactGitHub: "GitHub",
+                contactLinkedIn: "LinkedIn",
+                
+                // Footer
+                footerText: "© 2025 Houssam Otarid"
+            },
+            
+            fr: {
+                // Meta
+                siteTitle: "Houssam Otarid - Engineering Manager & Applied AI Engineer",
+                siteDescription: "Engineering Manager et Applied AI Engineer avec une expertise en développement full-stack, leadership d'équipe et intégration IA.",
+                
+                // Header
+                logo: "~/houssam",
+                
+                // Hero
+                heroTitle: "Houssam Otarid",
+                heroSubtitle: "Engineering Manager & Applied AI Engineer",
+                heroLocation: "Montreuil, France",
+                heroCTA: "En savoir plus",
+                
+                // About Section
+                aboutTitle: "À propos",
+                aboutParagraph1: "Je suis <strong>Engineering Manager</strong> et <strong>Applied AI Engineer</strong>, passionné par la création de solutions à l'intersection de l'ingénierie logicielle et de l'intelligence artificielle.",
+                aboutParagraph2: "Fort d'une expérience en <strong>développement full-stack</strong> et en <strong>leadership d'équipe</strong>, j'ai guidé la conception et la livraison de fonctionnalités basées sur l'IA et de systèmes agentiques qui transforment la façon dont les gens travaillent. Je combine une expertise technique approfondie avec un focus sur les pratiques collaboratives, que ce soit pour concevoir des architectures fiables, implémenter des fonctionnalités IA avec monitoring et traçabilité appropriés, ou accompagner les ingénieurs dans leur montée en compétences.",
+                aboutParagraph3: "Je m'épanouis en créant des ponts entre l'excellence technique et l'impact pratique, transformant les capacités émergentes de l'IA en outils fiables qui aident les équipes à avancer plus vite et plus intelligemment.",
+                
+                // About Focus Cards
+                focusAITitle: "Innovation IA",
+                focusAIDescription: "Conception et livraison de fonctionnalités basées sur l'IA et de systèmes agentiques à impact réel",
+                focusTeamTitle: "Leadership d'équipe",
+                focusTeamDescription: "Direction de petites équipes, mentorat d'ingénieurs, et implication active dans la résolution de problèmes techniques",
+                focusArchitectureTitle: "Conception d'architecture",
+                focusArchitectureDescription: "Construction de systèmes scalables et maintenables ancrés dans les meilleures pratiques d'ingénierie moderne",
+                
+                // Experience Section
+                experienceTitle: "Expérience",
+                
+                // Collective.work - Engineering Manager
+                collective1Company: "Collective.work",
+                collective1Role: "Engineering Manager - Applied AI Engineer",
+                collective1Location: "Paris, France",
+                collective1Duration: "Avril 2022 - Présent",
+                collective1Period1Label: "Depuis le pivot de l'entreprise (avril 2024) :",
+                collective1Period1Points: [
+                    "Rôle technique plus opérationnel tout en gérant une petite équipe de 2 ingénieurs",
+                    "Conception et mise en œuvre de fonctionnalités basées sur l'IA, y compris un copilote recruteur agentique exploitant tous les outils internes de recrutement (recherche, scoring de profils, etc.) pour automatiser les flux de travail de recrutement de bout en bout",
+                    "Intégration autonome de fournisseurs d'IA (OpenAI, Anthropic, Mistral), prompt engineering, et mise en place d'une infrastructure de traçabilité et de monitoring",
+                    "Soutien continu aux workflows de l'équipe tout en assumant davantage de responsabilités techniques"
+                ],
+                collective1Period2Label: "Avant cela :",
+                collective1Period2Points: [
+                    "Amélioration continue des processus de l'équipe Engineering et de la collaboration avec les autres équipes",
+                    "Gestion d'une équipe de 4 ingénieurs fullstack, incluant des entretiens individuels réguliers et des évaluations de performance",
+                    "Supervision du cycle de vie complet des projets : revue des spécifications, coordination de l'implémentation, respect des délais et des standards de qualité",
+                    "Encadrement technique et participation active aux discussions techniques via les chapters backend et frontend",
+                    "Conduite d'initiatives pour maintenir et améliorer la qualité du code à travers une gestion structurée de la dette technique"
+                ],
+                
+                // Collective.work - Senior Software Engineer
+                collective2Company: "Collective.work",
+                collective2Role: "Senior Software Engineer",
+                collective2Location: "Paris, France",
+                collective2Duration: "Novembre 2021 - Avril 2022",
+                collective2Points: [
+                    "Contribution à la mise en place et au développement de la toute première version de l'application Collective, notamment sur les architectures backend et frontend (Nx, DDD, architecture hexagonale)",
+                    "Collaboration étroite avec l'équipe Produit pour livrer les fonctionnalités nécessaires à la sortie de l'application et participation active à leur implémentation (NestJS, React, TypeScript, PostgreSQL)",
+                    "Définition des processus de fonctionnement de l'équipe Engineering et de sa collaboration avec l'équipe Produit, en lien étroit avec le CTO",
+                    "Contribution majeure à la refonte du processus de recrutement, ayant permis l'embauche réussie de 6 ingénieurs logiciels",
+                    "Participation à la mise en place initiale de l'infrastructure de tests pour garantir la fiabilité et la stabilité de l'application (Jest, Testing Library, Storybook, Chromatic, Datadog Synthetics)"
+                ],
+                
+                // Shift Technology
+                shiftCompany: "Shift Technology",
+                shiftRole: "Software Engineer → Senior Software Engineer",
+                shiftLocation: "Paris, France",
+                shiftDuration: "Juillet 2018 - Octobre 2021",
+                shiftPoints: [
+                    "Participation au développement de l'application web de la solution de détection de fraude de Shift",
+                    "Définition et/ou affinement de nouvelles fonctionnalités avec l'équipe Produit selon les demandes clients et la roadmap",
+                    "Conception et implémentation de solutions techniques (.NET Core, React, Elasticsearch, SQL)",
+                    "Coordination avec l'équipe QA pour livrer des versions stables (TestRail, Cypress, NUnit)",
+                    "Maintenance et amélioration du pipeline CI/CD (Git, TeamCity, Octopus Deploy, dotCover)",
+                    "Gestion des bugs et support aux Data Scientists pendant les périodes d'astreinte",
+                    "Développement d'un système de reporting très configurable et performant sans impacter les autres applications utilisant les mêmes données",
+                    "Mise en place d'un framework de tests E2E de l'application, intégré au pipeline CI",
+                    "Mentorat et onboarding des nouveaux arrivants"
+                ],
+                
+                // Algo Consulting Group
+                algoCompany: "Algo Consulting Group",
+                algoRole: "Software Engineer",
+                algoLocation: "Rabat, Maroc",
+                algoDuration: "Novembre 2017 - Juin 2018",
+                algoPoints: [
+                    "Développement de fonctionnalités sur un nouveau système de billetterie pour l'opérateur ferroviaire national du Maroc (.NET Framework, WPF, SQL)",
+                    "Amélioration du processus de développement et définition d'un processus de maintenance (TFS, Git)",
+                    "Monitoring et optimisation des performances",
+                    "Identification des goulots d'étranglement de performance et résolution suite au premier déploiement en production",
+                    "Aide au client pour définir les exigences et comprendre l'état de l'application et ses limitations techniques",
+                    "Implémentation de fonctionnalités pour permettre au système de billetterie de fonctionner hors ligne"
+                ],
+                
+                // Microsoft
+                microsoftCompany: "Microsoft",
+                microsoftRole: "Stagiaire en Recherche",
+                microsoftLocation: "Le Caire, Égypte",
+                microsoftDuration: "Juin 2016 - Août 2016",
+                microsoftPoints: [
+                    "Développement de systèmes de preuve de concept pour identifier les dialectes arabes à partir de texte et de parole, séparément, en utilisant différentes approches de Machine Learning (.NET Framework)",
+                    "Développement d'outils pour collecter et organiser des données textuelles et audio, et pour entraîner et tester des modèles de Machine Learning"
+                ],
+                
+                // Education Section
+                educationTitle: "Formation",
+                edu1University: "Al Akhawayn University in Ifrane",
+                edu1Degree: "Master of Science in Software Engineering",
+                edu1Location: "2017 • Ifrane, Maroc",
+                edu2University: "Al Akhawayn University in Ifrane",
+                edu2Degree: "Bachelor of Science in Computer Science",
+                edu2Location: "2016 • Ifrane, Maroc",
+                
+                // Skills Section  
+                skillsTitle: "Compétences",
+                skillAITitle: "IA & Machine Learning",
+                skillDevTitle: "Développement",
+                skillLeadershipTitle: "Leadership & Management",
+                skillLanguagesTitle: "Langues",
+                
+                // Skill Tags
+                skillPromptEngineering: "Prompt Engineering",
+                skillAgenticSystems: "Systèmes Agentiques",
+                skillLLMs: "Large Language Models (LLMs)",
+                skillRAG: "Retrieval-Augmented Generation (RAG)",
+                skillTeamGuidance: "Direction d'équipe",
+                skillWorkflowDesign: "Conception de workflows",
+                skillTechnicalDirection: "Direction technique",
+                skillMentoring: "Mentorat",
+                skillCodeQuality: "Pratiques de qualité de code",
+                
+                // Language Skills
+                langEnglish: "Anglais (Courant)",
+                langFrench: "Français (Courant)",
+                langArabic: "Arabe (Natif)",
+                
+                // Contact Section
+                contactTitle: "Contact",
+                contactEmail: "Email",
+                contactGitHub: "GitHub",
+                contactLinkedIn: "LinkedIn",
+                
+                // Footer
+                footerText: "© 2025 Houssam Otarid"
+            }
+        };
+
+        let currentLanguage = 'en';
+        
+        function initLanguage() {
+            const savedLang = localStorage.getItem('language');
+            if (savedLang === 'fr') {
+                currentLanguage = 'fr';
+            } else {
+                currentLanguage = 'en';
+                if (savedLang !== 'en') {
+                    localStorage.setItem('language', 'en');
+                }
+            }
+            updateLanguageToggle();
+            translatePage();
+        }
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'fr' : 'en';
+            localStorage.setItem('language', currentLanguage);
+            updateLanguageToggle();
+            translatePage();
+        }
+        
+        function updateLanguageToggle() {
+            const langText = document.querySelector('.lang-text');
+            if (langText) {
+                langText.textContent = currentLanguage === 'en' ? 'FR' : 'EN';
+            }
+        }
+        
+        function translatePage() {
+            const lang = translations[currentLanguage];
+            
+            document.title = lang.siteTitle;
+            document.querySelector('meta[name="description"]').content = lang.siteDescription;
+            document.querySelector('meta[property="og:title"]').content = lang.siteTitle;
+            document.querySelector('meta[property="og:description"]').content = lang.siteDescription;
+            document.querySelector('meta[property="twitter:title"]').content = lang.siteTitle;
+            document.querySelector('meta[property="twitter:description"]').content = lang.siteDescription;
+            document.documentElement.lang = currentLanguage;
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (lang[key]) {
+                    element.textContent = lang[key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(element => {
+                const key = element.getAttribute('data-i18n-html');
+                if (lang[key]) {
+                    element.innerHTML = lang[key];
+                }
+            });
+            translateExperience();
+            translateEducation();
+            translateSkills();
+        }
+        
+        function translateExperience() {
+            const lang = translations[currentLanguage];
+            const expCards = document.querySelectorAll('.experience-card');
+            if (expCards[0]) {
+                expCards[0].querySelector('.company-name').textContent = lang.collective1Company;
+                expCards[0].querySelector('.role').textContent = lang.collective1Role;
+                expCards[0].querySelector('.location').textContent = lang.collective1Location;
+                expCards[0].querySelector('.duration').textContent = lang.collective1Duration;
+                
+                const periods = expCards[0].querySelectorAll('.experience-period');
+                if (periods[0]) {
+                    periods[0].querySelector('.period-label').textContent = lang.collective1Period1Label;
+                    const points1 = periods[0].querySelectorAll('.highlights li');
+                    lang.collective1Period1Points.forEach((point, i) => {
+                        if (points1[i]) points1[i].textContent = point;
+                    });
+                }
+                if (periods[1]) {
+                    periods[1].querySelector('.period-label').textContent = lang.collective1Period2Label;
+                    const points2 = periods[1].querySelectorAll('.highlights li');
+                    lang.collective1Period2Points.forEach((point, i) => {
+                        if (points2[i]) points2[i].textContent = point;
+                    });
+                }
+            }
+            if (expCards[1]) {
+                expCards[1].querySelector('.company-name').textContent = lang.collective2Company;
+                expCards[1].querySelector('.role').textContent = lang.collective2Role;
+                expCards[1].querySelector('.location').textContent = lang.collective2Location;
+                expCards[1].querySelector('.duration').textContent = lang.collective2Duration;
+                const points = expCards[1].querySelectorAll('.highlights li');
+                lang.collective2Points.forEach((point, i) => {
+                    if (points[i]) points[i].textContent = point;
+                });
+            }
+            if (expCards[2]) {
+                expCards[2].querySelector('.company-name').textContent = lang.shiftCompany;
+                expCards[2].querySelector('.role').textContent = lang.shiftRole;
+                expCards[2].querySelector('.location').textContent = lang.shiftLocation;
+                expCards[2].querySelector('.duration').textContent = lang.shiftDuration;
+                const points = expCards[2].querySelectorAll('.highlights li');
+                lang.shiftPoints.forEach((point, i) => {
+                    if (points[i]) points[i].textContent = point;
+                });
+            }
+            if (expCards[3]) {
+                expCards[3].querySelector('.company-name').textContent = lang.algoCompany;
+                expCards[3].querySelector('.role').textContent = lang.algoRole;
+                expCards[3].querySelector('.location').textContent = lang.algoLocation;
+                expCards[3].querySelector('.duration').textContent = lang.algoDuration;
+                const points = expCards[3].querySelectorAll('.highlights li');
+                lang.algoPoints.forEach((point, i) => {
+                    if (points[i]) points[i].textContent = point;
+                });
+            }
+            if (expCards[4]) {
+                expCards[4].querySelector('.company-name').textContent = lang.microsoftCompany;
+                expCards[4].querySelector('.role').textContent = lang.microsoftRole;
+                expCards[4].querySelector('.location').textContent = lang.microsoftLocation;
+                expCards[4].querySelector('.duration').textContent = lang.microsoftDuration;
+                const points = expCards[4].querySelectorAll('.highlights li');
+                lang.microsoftPoints.forEach((point, i) => {
+                    if (points[i]) points[i].textContent = point;
+                });
+            }
+        }
+        
+        function translateEducation() {
+            const lang = translations[currentLanguage];
+            const eduCards = document.querySelectorAll('#education .card');
+            
+            if (eduCards[0]) {
+                eduCards[0].querySelector('.company-name').textContent = lang.edu1University;
+                eduCards[0].querySelector('.role').textContent = lang.edu1Degree;
+                eduCards[0].querySelector('.location').textContent = lang.edu1Location;
+            }
+            
+            if (eduCards[1]) {
+                eduCards[1].querySelector('.company-name').textContent = lang.edu2University;
+                eduCards[1].querySelector('.role').textContent = lang.edu2Degree;
+                eduCards[1].querySelector('.location').textContent = lang.edu2Location;
+            }
+        }
+        
+        function translateSkills() {
+            const lang = translations[currentLanguage];
+            const skillCards = document.querySelectorAll('.skill-card');
+            
+            if (skillCards[0]) {
+                skillCards[0].querySelector('.skill-title').textContent = lang.skillAITitle;
+                const tags = skillCards[0].querySelectorAll('.skill-tag');
+                const aiSkills = [lang.skillPromptEngineering, lang.skillAgenticSystems, lang.skillLLMs, lang.skillRAG];
+                aiSkills.forEach((skill, i) => {
+                    if (tags[i]) {
+                        const icon = tags[i].querySelector('i');
+                        tags[i].innerHTML = '';
+                        if (icon) tags[i].appendChild(icon.cloneNode(true));
+                        tags[i].appendChild(document.createTextNode(' ' + skill));
+                    }
+                });
+            }
+            if (skillCards[1]) {
+                skillCards[1].querySelector('.skill-title').textContent = lang.skillDevTitle;
+            }
+            if (skillCards[2]) {
+                skillCards[2].querySelector('.skill-title').textContent = lang.skillLeadershipTitle;
+                const tags = skillCards[2].querySelectorAll('.skill-tag');
+                const leadershipSkills = [lang.skillTeamGuidance, lang.skillWorkflowDesign, lang.skillTechnicalDirection, lang.skillMentoring, lang.skillCodeQuality];
+                leadershipSkills.forEach((skill, i) => {
+                    if (tags[i]) {
+                        const icon = tags[i].querySelector('i');
+                        tags[i].innerHTML = '';
+                        if (icon) tags[i].appendChild(icon.cloneNode(true));
+                        tags[i].appendChild(document.createTextNode(' ' + skill));
+                    }
+                });
+            }
+            if (skillCards[3]) {
+                skillCards[3].querySelector('.skill-title').textContent = lang.skillLanguagesTitle;
+                const tags = skillCards[3].querySelectorAll('.skill-tag');
+                const languages = [lang.langEnglish, lang.langFrench, lang.langArabic];
+                languages.forEach((language, i) => {
+                    if (tags[i]) tags[i].textContent = language;
+                });
+            }
+        }
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -1342,7 +1875,6 @@
             localStorage.setItem('theme', newTheme);
         }
 
-        // Initialize theme from localStorage or default to dark
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const theme = savedTheme || 'dark';
@@ -1350,14 +1882,12 @@
             document.documentElement.setAttribute('data-theme', theme);
         }
 
-        // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
                 document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
             }
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1371,7 +1901,6 @@
             });
         });
 
-        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1386,16 +1915,13 @@
             });
         }, observerOptions);
 
-        // Initialize theme and animations on page load
         document.addEventListener('DOMContentLoaded', function() {
             initTheme();
-            
-            // Observe elements for animation
+            initLanguage();
             document.querySelectorAll('.animate-in').forEach(el => {
                 observer.observe(el);
             });
 
-            // Add parallax effect to hero background
             let ticking = false;
             
             function updateParallax() {
@@ -1417,14 +1943,12 @@
 
             window.addEventListener('scroll', requestTick, { passive: true });
 
-            // Add hover sound effect simulation (visual feedback)
             document.querySelectorAll('.card, .contact-card, .skill-card, .experience-card').forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                 });
             });
 
-            // Header scroll effect
             let lastScroll = 0;
             const header = document.querySelector('.header');
             
@@ -1443,7 +1967,6 @@
             }, { passive: true });
         });
 
-        // Add typing animation to hero title
         function typeWriter(element, text, speed = 100) {
             let i = 0;
             element.innerHTML = '';
@@ -1459,7 +1982,6 @@
             type();
         }
 
-        // Easter egg: Konami code
         let konamiCode = [];
         const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
         
@@ -1475,7 +1997,6 @@
             }
         });
 
-        // Add rainbow animation for easter egg
         const style = document.createElement('style');
         style.textContent = `
             @keyframes rainbow {

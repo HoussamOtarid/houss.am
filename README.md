@@ -12,10 +12,11 @@
 
 ## 🎯 Overview
 
-A minimalist, performant personal portfolio website built with vanilla HTML, CSS, and JavaScript. Features a clean design with dark/light theme support, smooth animations, and exceptional performance metrics.
+A minimalist, performant personal portfolio website built with vanilla HTML, CSS, and JavaScript. Features bilingual support (English/French), dark/light theme switching, smooth animations, and exceptional performance metrics.
 
 ## ✨ Features
 
+- **🌐 Bilingual Support** - Full English/French language toggle with persistent preference
 - **🌓 Dark/Light Theme Toggle** - Seamless theme switching with system preference detection
 - **⚡ Lightning Fast** - No framework overhead, optimized for speed
 - **📱 Fully Responsive** - Looks great on all devices from mobile to desktop
