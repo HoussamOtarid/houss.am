@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-N9QW5CVT');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBPFG9CVSF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FBPFG9CVSF');
+    </script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,12 +50,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <!-- Critical Font Awesome icons inline -->
+    <style>
+        /* Font Awesome 7 - Critical fonts */
+        @font-face {
+            font-family: 'Font Awesome 7 Free';
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/webfonts/fa-solid-900.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Font Awesome 7 Brands';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/webfonts/fa-brands-400.woff2) format('woff2');
+        }
+        /* Base classes */
+        .fa, .fas { font-family: 'Font Awesome 7 Free'; font-weight: 900; font-style: normal; -webkit-font-smoothing: antialiased; display: inline-block; }
+        .fab { font-family: 'Font Awesome 7 Brands'; font-weight: 400; font-style: normal; -webkit-font-smoothing: antialiased; display: inline-block; }
+        /* Icon definitions */
+        .fa-sun:before { content: "\f185"; }
+        .fa-moon:before { content: "\f186"; }
+        .fa-map-marker-alt:before { content: "\f3c5"; }
+        .fa-arrow-down:before { content: "\f063"; }
+        .fa-robot:before { content: "\f544"; }
+        .fa-users-cog:before { content: "\f509"; }
+        .fa-layer-group:before { content: "\f5fd"; }
+        .fa-terminal:before { content: "\f120"; }
+        .fa-brain:before { content: "\f5dc"; }
+        .fa-database:before { content: "\f1c0"; }
+        .fa-code:before { content: "\f121"; }
+        .fa-users:before { content: "\f0c0"; }
+        .fa-chart-line:before { content: "\f201"; }
+        .fa-chess:before { content: "\f439"; }
+        .fa-hands-helping:before { content: "\f4c4"; }
+        .fa-check-circle:before { content: "\f058"; }
+        .fa-globe:before { content: "\f0ac"; }
+        .fa-envelope:before { content: "\f0e0"; }
+        .fa-github:before { content: "\f09b"; }
+        .fa-linkedin:before { content: "\f08c"; }
+    </style>
     
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Devicons for technology icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/devicon.min.css">
+    
     
     <style>
         * {
@@ -216,22 +260,21 @@
         .header-controls {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .lang-toggle {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            min-width: 50px;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
             font-weight: 600;
@@ -241,30 +284,14 @@
         .lang-toggle:hover {
             border-color: var(--accent);
             transform: scale(1.05);
+            box-shadow: 0 0 20px var(--glow);
         }
 
-        .lang-toggle::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--glow);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .lang-toggle:hover::before {
-            width: 100px;
-            height: 100px;
-        }
-
-        .theme-toggle {
+        .theme-toggle,
+        .header-icon {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 50%;
+            border-radius: 12px;
             width: 44px;
             height: 44px;
             cursor: pointer;
@@ -273,37 +300,58 @@
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
         }
 
-        .theme-toggle::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--glow);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
+        .header-icon {
+            text-decoration: none;
         }
 
-        .theme-toggle:hover {
+        .theme-toggle:hover,
+        .header-icon:hover {
             border-color: var(--accent);
             transform: scale(1.05);
+            box-shadow: 0 0 20px var(--glow);
         }
 
-        .theme-toggle:hover::before {
-            width: 100px;
-            height: 100px;
-        }
-
-        .theme-toggle i {
+        .theme-toggle i,
+        .header-icon i {
             font-size: 1.1rem;
             color: var(--text-primary);
             transition: all 0.3s ease;
             z-index: 1;
+        }
+
+        /* Tooltips for header buttons */
+        [data-tooltip] {
+            position: relative !important;
+        }
+
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s, visibility 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border);
+            z-index: 9999;
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Main Content */
@@ -811,6 +859,14 @@
                 padding: 4rem 0;
             }
 
+            .header-icon {
+                display: none;
+            }
+
+            [data-tooltip]::after {
+                display: none;
+            }
+
             .company-header {
                 flex-direction: column;
                 align-items: start;
@@ -1052,23 +1108,27 @@
     </script>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9QW5CVT"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
     <header class="header">
         <nav class="container" role="navigation" aria-label="Main navigation">
             <div class="header-content">
-                <a href="#" class="logo" aria-label="Home" data-i18n="logo">~/houssam</a>
+                <a href="#top" class="logo" aria-label="Home" data-i18n="logo" onclick="event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });">~/houssam</a>
                 <div class="header-controls">
-                    <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language" type="button">
+                    <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language" type="button" data-tooltip="Switch to English">
                         <span class="lang-text">FR</span>
                     </button>
-                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" type="button">
+                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" type="button" data-tooltip="Switch to light mode">
                         <i class="fas fa-sun sun-icon" aria-hidden="true"></i>
                         <i class="fas fa-moon moon-icon" aria-hidden="true"></i>
                     </button>
+                    <a href="mailto:hi@houss.am" class="header-icon" aria-label="Send email" data-tooltip="Email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/HoussamOtarid" class="header-icon" target="_blank" rel="noopener" aria-label="GitHub profile" data-tooltip="GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/houssam-otarid" class="header-icon" target="_blank" rel="noopener" aria-label="LinkedIn profile" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -1305,13 +1365,34 @@
                             </div>
                             <div class="skill-title">Development</div>
                             <div class="skill-tags">
-                                <span class="skill-tag"><i class="devicon-typescript-plain"></i> TypeScript</span>
-                                <span class="skill-tag"><i class="devicon-nodejs-plain"></i> Node.js</span>
-                                <span class="skill-tag"><i class="devicon-nestjs-plain"></i> NestJS</span>
-                                <span class="skill-tag"><i class="devicon-react-original"></i> React</span>
-                                <span class="skill-tag"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
-                                <span class="skill-tag"><i class="devicon-elasticsearch-plain"></i> Elasticsearch</span>
-                                <span class="skill-tag"><i class="devicon-dotnetcore-plain"></i> .NET Core</span>
+                                <span class="skill-tag">
+                                    <svg viewBox="0 0 128 128" style="width: 1em; height: 1em; vertical-align: middle;">
+                                        <path fill="currentColor" opacity="0.8" d="M2 63.91v62.5h125v-125H2zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1A23 23 0 0180 109.19c-1.15-1.27-3.39-4.58-3.25-4.82a9.34 9.34 0 011.15-.73l4.6-2.64 3.59-2.08.75 1.11a16.78 16.78 0 004.74 4.54c4 2.1 9.46 1.81 12.16-.62a5.43 5.43 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H57.16v46.23H45.65V69.26H29.38v-5a49.19 49.19 0 01.14-5.16c.06-.08 10-.12 22-.1h21.81z"></path>
+                                    </svg> TypeScript</span>
+                                <span class="skill-tag">
+                                    <svg viewBox="0 0 128 128" style="width: 1em; height: 1em; vertical-align: middle;">
+                                        <path fill="currentColor" opacity="0.8" d="M66.958.825a6.07 6.07 0 0 0-6.035 0L11.103 29.76c-1.895 1.072-2.96 3.095-2.96 5.24v57.988c0 2.143 1.183 4.167 2.958 5.24l49.82 28.934a6.07 6.07 0 0 0 6.036 0l49.82-28.935c1.894-1.072 2.958-3.096 2.958-5.24V35c0-2.144-1.183-4.167-2.958-5.24z"></path>
+                                    </svg> Node.js</span>
+                                <span class="skill-tag">
+                                    <svg viewBox="0 0 16 16" style="width: 1em; height: 1em; vertical-align: middle;">
+                                        <path fill="currentColor" opacity="0.8" d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.5a4 4 0 100 8 4 4 0 000-8zm0 1.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"></path>
+                                    </svg> NestJS</span>
+                                <span class="skill-tag">
+                                    <svg viewBox="0 0 128 128" style="width: 1em; height: 1em; vertical-align: middle;">
+                                        <g fill="currentColor" opacity="0.8"><circle cx="64" cy="64" r="11.4"></circle><path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 16-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.4-.7 4.7-1.4 6.9-2.3 12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3-.3 2.1-.8 4.3-1.4 6.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13 7.4-7.3 14.9-12.3 21-12.3 1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6-3.7.3-7.4.4-11.2.4-3.9 0-7.6-.1-11.2-.4-2.2-3.2-4.2-6.4-6-9.6-1.9-3.3-3.7-6.7-5.3-10 1.6-3.3 3.4-6.7 5.3-10 1.8-3.2 3.9-6.4 6.1-9.6 3.7-.3 7.4-.4 11.2-.4 3.9 0 7.6.1 11.2.4 2.2 3.2 4.2 6.4 6 9.6 1.9 3.3 3.7 6.7 5.3 10-1.7 3.3-3.4 6.6-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3-3.4.8-7 1.4-10.8 1.9 1.2-1.9 2.5-3.9 3.6-6 1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3 2.3.1 4.6.2 6.9.2 2.3 0 4.6-.1 6.9-.2-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9 1.1-3.3 2.3-6.8 3.8-10.3 1.1 2 2.2 4.1 3.4 6.1 1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3 3.4-.8 7-1.4 10.8-1.9-1.2 1.9-2.5 3.9-3.6 6-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3-2.3-.1-4.6-.2-6.9-.2-2.3 0-4.6.1-6.9.2 2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9-1.1 3.3-2.3 6.8-3.8 10.3-1.1-2.1-2.2-4.2-3.4-6.2zM31.7 35c-1.7-10.5-.3-17.9 3.8-20.3 1-.6 2.2-.9 3.5-.9 6 0 13.5 4.9 21 12.3-3.5 3.8-7 8.2-10.4 13-5.8.5-11.3 1.4-16.5 2.5-.6-2.3-1-4.5-1.4-6.6zM7 64c0-4.7 5.7-9.7 15.7-13.4 2-.8 4.2-1.5 6.4-2.1 1.6 5 3.6 10.3 6 15.6-2.4 5.3-4.5 10.5-6 15.5C15.3 75.6 7 69.6 7 64zm28.5 49.3c-4.1-2.4-5.5-9.8-3.8-20.3.3-2.1.8-4.3 1.4-6.6 5.2 1.2 10.7 2 16.5 2.5 3.4 4.8 6.9 9.1 10.4 13-7.4 7.3-14.9 12.3-21 12.3-1.3 0-2.5-.3-3.5-.9zM96.3 93c1.7 10.5.3 17.9-3.8 20.3-1 .6-2.2.9-3.5.9-6 0-13.5-4.9-21-12.3 3.5-3.8 7-8.2 10.4-13 5.8-.5 11.3-1.4 16.5-2.5.6 2.3 1 4.5 1.4 6.6zm9-15.6c-2 .8-4.2 1.5-6.4 2.1-1.6-5-3.6-10.3-6-15.6 2.4-5.3 4.5-10.5 6-15.5 13.8 4 22.1 10 22.1 15.6 0 4.7-5.8 9.7-15.7 13.4z"></path></g>
+                                    </svg> React</span>
+                                <span class="skill-tag">
+                                    <svg viewBox="0 0 128 128" style="width: 1em; height: 1em; vertical-align: middle;">
+                                        <path fill="currentColor" opacity="0.8" d="M93.809 92.112c.785-6.533.55-7.492 5.416-6.433l1.235.108c3.742.17 8.637-.602 11.513-1.938 6.191-2.873 9.861-7.668 3.758-6.409-13.924 2.873-14.881-1.842-14.881-1.842 14.703-21.815 20.849-49.508 15.543-56.287-14.47-18.489-39.517-9.746-39.936-9.52l-.134.025c-2.751-.571-5.83-.912-9.289-.968-6.301-.104-11.082 1.652-14.709 4.402 0 0-44.683-18.409-42.604 23.151.442 8.841 12.672 66.898 27.26 49.362 5.332-6.412 10.484-11.834 10.484-11.834 2.558 1.699 5.622 2.567 8.834 2.255l.249-.212c-.078.796-.044 1.575.099 2.497-3.757 4.199-2.653 4.936-10.166 6.482-7.602 1.566-3.136 4.355-.221 5.084 3.535.884 11.712 2.136 17.238-5.598l-.22.882c1.474 1.18 1.375 8.477 1.583 13.69.209 5.214.558 10.079 1.621 12.948 1.063 2.868 2.317 10.256 12.191 8.14 8.252-1.764 14.561-4.309 15.136-27.985"></path>
+                                    </svg> PostgreSQL</span>
+                                <span class="skill-tag">
+                                    <svg viewBox="0 0 128 128" style="width: 1em; height: 1em; vertical-align: middle;">
+                                        <path fill="currentColor" opacity="0.8" d="M4 64c0 5.535.777 10.879 2.098 16H84c8.836 0 16-7.164 16-16s-7.164-16-16-16H6.098A63.738 63.738 0 0 0 4 64m107.695-33.352A61.485 61.485 0 0 0 117.922 24C106.188 9.379 88.199 0 68 0 42.715 0 20.957 14.71 10.574 36H98.04a20.123 20.123 0 0 0 13.652-5.352M98.04 92H10.58c10.38 21.29 32.134 36 57.42 36 20.2 0 38.188-9.383 49.922-24a61.1 61.1 0 0 0-6.227-6.648A20.133 20.133 0 0 0 98.04 92"></path>
+                                    </svg> Elasticsearch</span>
+                                <span class="skill-tag">
+                                    <svg viewBox="0 0 128 128" style="width: 1em; height: 1em; vertical-align: middle;">
+                                        <path fill="currentColor" opacity="0.8" d="M61.195 0h4.953c12.918.535 25.688 4.89 36.043 12.676 9.809 7.289 17.473 17.437 21.727 28.906 2.441 6.387 3.664 13.18 4.082 19.992v4.211c-.414 11.293-3.664 22.52-9.73 32.082-6.801 10.895-16.922 19.73-28.727 24.828A64.399 64.399 0 0165.082 128h-2.144c-11.735-.191-23.41-3.66-33.297-9.992-11.196-7.113-20.114-17.785-25.028-30.117C1.891 81.19.441 74.02 0 66.812v-4.957c.504-14.39 5.953-28.609 15.41-39.496C23.168 13.31 33.5 6.48 44.887 2.937 50.172 1.27 55.676.41 61.195 0M25.191 37.523c-.03 12.153-.011 24.305-.011 36.454 1.43.011 2.86.011 4.293.011-.075-10.433.101-20.863-.106-31.293.48.907.918 1.84 1.465 2.707C37.035 54.91 43.105 64.5 49.309 74c1.738-.023 3.476-.023 5.214.004-.003-12.16-.007-24.32.004-36.48a308.076 308.076 0 00-4.25-.012c.075 10.32-.136 20.64.125 30.949-6.507-10.352-13.101-20.645-19.695-30.945a370.85 370.85 0 00-5.516.007m38.844-.011c-.129 12.16-.004 24.32-.047 36.476 6.469-.015 12.938.024 19.41-.02a83.36 83.36 0 01.024-3.952c-5.012-.016-10.027.007-15.043-.02-.074-4.21-.004-8.426-.04-12.637 4.395-.078 8.79.012 13.18-.047-.011-1.277-.011-2.554-.019-3.832-4.387.141-8.773-.054-13.164.012.012-4.023.02-8.05.02-12.078 4.699 0 9.398-.02 14.093.012-.008-1.301 0-2.606.016-3.906-6.145-.016-12.29-.008-18.43-.008m22.602.054c.004 1.266.004 2.528.008 3.79 3.488-.04 6.972.109 10.46.035-.023 10.863.004 21.718-.011 32.574 1.46.043 2.93.035 4.39-.09-.12-5.992.118-11.988-.156-17.977.067-2.699-.07-5.394.117-8.09.106-2.14-.277-4.277-.035-6.417 3.516.047 7.035.015 10.55.015a59.774 59.774 0 01.075-3.832c-8.469-.105-16.937-.094-25.398-.008M13.55 69.094c-1.977.91-2.106 4.023-.149 5.027 1.72 1.18 4.305-.371 4.227-2.41.133-2.004-2.29-3.688-4.078-2.617m29.23 15.289c-4.277 3.469-4.226 11.195.5 14.25 2.668 1.695 6.102 1.344 8.922.215.012-.621.027-1.239.05-1.86-2.671 1.395-6.41 1.68-8.675-.61-2.965-3.237-2.297-9.269 1.613-11.476 2.211-1.164 4.907-.824 7.086.239-.007-.66-.004-1.32 0-1.98-3.097-1.099-6.922-1.04-9.496 1.222m17.207 2.71c-1.89.22-3.758 1.22-4.633 2.966-1.253 2.496-1.109 5.867.864 7.96 2.035 2.297 5.945 2.32 8.18.297 2.425-2.308 2.699-6.468.757-9.164-1.148-1.629-3.273-2.183-5.168-2.058m17.887 2.722c-1.66 2.883-1.332 7.25 1.598 9.211 2.183 1.22 4.933.832 7.074-.308-.004-.617.004-1.235.031-1.848-1.687 1.07-3.937 1.856-5.812.777-1.309-.722-1.704-2.257-1.914-3.625 2.875-.039 5.746-.082 8.625-.074-.075-1.828-.118-3.894-1.45-5.308-2.199-2.43-6.644-1.657-8.152 1.175m-8.414-2.336v12.008c.652 0 1.312 0 1.973.004.023-2.195-.04-4.394.023-6.594.016-1.27.527-2.558 1.484-3.414.801-.605 1.883-.27 2.801-.246-.012-.636-.02-1.27-.023-1.902-1.793-.398-3.336.652-4.242 2.117-.02-.633-.04-1.266-.051-1.894-.656-.024-1.313-.051-1.965-.079zm0 0"></path>
+                                    </svg> .NET Core</span>
                             </div>
                         </div>
                     </div>
@@ -1392,6 +1473,8 @@
                 
                 // Header
                 logo: "~/houssam",
+                switchToLightMode: "Switch to light mode",
+                switchToDarkMode: "Switch to dark mode",
                 
                 // Hero
                 heroTitle: "Houssam Otarid",
@@ -1540,6 +1623,8 @@
                 
                 // Header
                 logo: "~/houssam",
+                switchToLightMode: "Passer en mode clair",
+                switchToDarkMode: "Passer en mode sombre",
                 
                 // Hero
                 heroTitle: "Houssam Otarid",
@@ -1696,6 +1781,10 @@
             }
             updateLanguageToggle();
             translatePage();
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme) {
+                updateThemeTooltip(currentTheme);
+            }
         }
         
         function toggleLanguage() {
@@ -1703,12 +1792,19 @@
             localStorage.setItem('language', currentLanguage);
             updateLanguageToggle();
             translatePage();
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            updateThemeTooltip(currentTheme);
         }
         
         function updateLanguageToggle() {
             const langText = document.querySelector('.lang-text');
             if (langText) {
                 langText.textContent = currentLanguage === 'en' ? 'FR' : 'EN';
+            }
+            // Update language button tooltip
+            const langButton = document.querySelector('.lang-toggle');
+            if (langButton) {
+                langButton.setAttribute('data-tooltip', currentLanguage === 'en' ? 'Passer en français' : 'Switch to English');
             }
         }
         
@@ -1871,6 +1967,18 @@
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            
+            // Update theme button tooltip using translations
+            updateThemeTooltip(newTheme);
+        }
+        
+        function updateThemeTooltip(theme) {
+            const themeButton = document.querySelector('.theme-toggle');
+            if (themeButton) {
+                const tooltipKey = theme === 'dark' ? 'switchToLightMode' : 'switchToDarkMode';
+                const tooltipText = translations[currentLanguage][tooltipKey];
+                themeButton.setAttribute('data-tooltip', tooltipText);
+            }
         }
 
         function initTheme() {
@@ -1878,6 +1986,8 @@
             const theme = savedTheme || 'dark';
             
             document.documentElement.setAttribute('data-theme', theme);
+            
+            updateThemeTooltip(theme);
         }
 
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -1914,8 +2024,8 @@
         }, observerOptions);
 
         document.addEventListener('DOMContentLoaded', function() {
-            initTheme();
             initLanguage();
+            initTheme();
             document.querySelectorAll('.animate-in').forEach(el => {
                 observer.observe(el);
             });
