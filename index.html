@@ -554,6 +554,57 @@
             margin-bottom: 2rem;
         }
 
+        .experience-card.hidden {
+            display: none;
+        }
+
+        .load-more-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .load-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .load-more-btn:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .load-more-btn.hidden {
+            display: none;
+        }
+
+        .load-more-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .load-more-btn:hover svg {
+            transform: translateY(2px);
+        }
+
         .experience-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border);
@@ -1317,6 +1368,14 @@
                         </ul>
                     </div>
                 </div>
+                <div class="load-more-container animate-in">
+                    <button class="load-more-btn" id="loadMoreBtn" aria-label="Load more experiences">
+                        <span data-i18n="loadMore">Load More</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </section>
 
             <!-- Education Section -->
@@ -1498,6 +1557,7 @@
                 
                 // Experience Section
                 experienceTitle: "Experience",
+                loadMore: "Load More",
                 
                 // Collective.work - Engineering Manager
                 collective1Company: "Collective.work",
@@ -1648,6 +1708,7 @@
                 
                 // Experience Section
                 experienceTitle: "Expérience",
+                loadMore: "Voir plus",
                 
                 // Collective.work - Engineering Manager
                 collective1Company: "Collective.work",
@@ -2026,6 +2087,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initLanguage();
             initTheme();
+            initExperienceLoader();
             document.querySelectorAll('.animate-in').forEach(el => {
                 observer.observe(el);
             });
@@ -2054,6 +2116,65 @@
                 lastScroll = currentScroll;
             }, { passive: true });
         });
+
+        // Experience loader functionality
+        function initExperienceLoader() {
+            const experienceCards = document.querySelectorAll('.experience-card');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            let visibleCount = 2; // Start by showing only 2 cards
+            
+            // Hide all cards except the first 2
+            experienceCards.forEach((card, index) => {
+                if (index >= visibleCount) {
+                    card.classList.add('hidden');
+                    card.classList.remove('animate-in', 'visible');
+                }
+            });
+            
+            // Hide button if all cards are visible
+            if (visibleCount >= experienceCards.length) {
+                loadMoreBtn.classList.add('hidden');
+            }
+            
+            // Load more functionality
+            loadMoreBtn.addEventListener('click', function() {
+                if (visibleCount < experienceCards.length) {
+                    // Show one more card
+                    const cardToShow = experienceCards[visibleCount];
+                    cardToShow.classList.remove('hidden');
+                    cardToShow.classList.add('animate-in');
+                    
+                    // Trigger animation after a brief delay
+                    setTimeout(() => {
+                        cardToShow.classList.add('visible');
+                    }, 50);
+                    
+                    visibleCount++;
+                    
+                    // Update button text or hide if all cards are shown
+                    if (visibleCount >= experienceCards.length) {
+                        loadMoreBtn.classList.add('hidden');
+                    } else {
+                        // Update remaining count in button if desired
+                        const remaining = experienceCards.length - visibleCount;
+                        if (remaining === 1) {
+                            const btnText = loadMoreBtn.querySelector('span');
+                            if (currentLanguage === 'fr') {
+                                btnText.textContent = 'Voir la dernière';
+                            } else {
+                                btnText.textContent = 'Show Last';
+                            }
+                        }
+                    }
+                    
+                    // Smooth scroll to the newly visible card
+                    cardToShow.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest'
+                    });
+                }
+            });
+        }
 
         let konamiCode = [];
         const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
