@@ -1,0 +1,32 @@
+/* Motion: everything settles on one critically damped spring (no bounce). Only active under html.m, which the head
+   script sets when JS runs and the visitor hasn't asked for reduced motion; without it the page is the static one. */
+:root{--spring:linear(0, 0.0550 4.2%, 0.1734 8.3%, 0.3101 12.5%, 0.4422 16.7%, 0.5591 20.8%, 0.6575 25%, 0.7374 29.2%, 0.8009 33.3%, 0.8503 37.5%, 0.8883 41.7%, 0.9172 45.8%, 0.9389 50%, 0.9551 54.2%, 0.9672 58.3%, 0.9761 62.5%, 0.9826 66.7%, 0.9874 70.8%, 0.9909 75%, 0.9935 79.2%, 0.9953 83.3%, 0.9966 87.5%, 0.9976 91.7%, 0.9983 95.8%, 1)}
+@keyframes m-rise{from{opacity:0;transform:translateY(8px)}}
+@keyframes m-line{from{transform:translateY(105%)}}
+@keyframes m-draw{from{transform:scaleX(0)}}
+
+/* 1. Entrance, started by the script (html.go) once the serif has loaded: name, intro line by line, then the links. */
+.m:not(.go) .name,.m:not(.go) .intro,.m:not(.go) .bar li,.m:not(.go) .bar .lang{opacity:0}
+.m.go .name{animation:m-rise .8s var(--spring) both}
+.m .intro .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.m.go .intro .ln>span{display:inline-block;animation:m-line .95s var(--spring) both;animation-delay:calc(.12s + var(--i)*.09s)}
+.m.go .bar li,.m.go .bar .lang{animation:m-rise .8s var(--spring) both;animation-delay:calc(var(--d) + var(--i)*.06s)}
+
+/* 2. Sections: each rule draws from the left as it comes into view, its content rises just behind it. */
+.m .item,.m .skill{border-top-color:transparent;position:relative}
+.m .item::before,.m .skill::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--rule);transform-origin:left;transform:scaleX(0)}
+.m .item>*,.m .skill>*,.m h2,.m footer{opacity:0}
+.m .in::before{animation:m-draw 1.1s var(--spring) var(--delay,0s) both;transform:none}
+.m .in>*,.m h2.in,.m footer.in{opacity:1;animation:m-rise .9s var(--spring) calc(var(--delay,0s) + .08s) both}
+
+/* 3. Dates: digits roll into place like an odometer. */
+.dg{display:inline-block;height:1.65em;overflow:hidden;vertical-align:top}
+.dg>span{display:block;transition:transform .7s var(--spring);transition-delay:var(--dd,0s)}
+.dg>span>i{display:block;height:1.65em;font-style:normal}
+.dg.go>span{transform:translateY(calc(-1.65em * var(--n)))}
+
+/* 4. Switching English/French morphs instead of reloading (browsers with cross-document view transitions). */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.9s;animation-timing-function:cubic-bezier(.45,0,.25,1)}
+
+@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
